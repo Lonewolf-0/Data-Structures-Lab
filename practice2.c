@@ -1,21 +1,16 @@
-#include<stdio.h>
-
-int gcd(int a,int b)
+#include <stdio.h> 
+void toh(int n,char a,char b,char c)
 {
-    if(a%b==0)
-        return b;
-    else
-        return gcd(b,a%b);
+    if(n>0)
+    {
+        toh(n-1,a,c,b);
+        printf("Move disk %d from %c to %c \n",n,a,c);
+        toh(n-1,b,a,c);
+    }
 }
 
-
-int main()
-{
-   
-    
-    printf("%d ",gcd(6,21));
-    
-
-
+int main() 
+{   
+    toh(4,'A','B','C');
     return 0;
 }

@@ -1,14 +1,16 @@
-#include<stdio.h>
-
-void toh(int n,char x, char y, char z)
+#include <stdio.h> 
+void toh(int n,char a,char b,char c)
 {
-    if(n==1)
+    if(n>0)
     {
-        printf("Move disk %d from %c to %c");
+        toh(n-1,a,c,b);
+        printf("Move disk %d from %c to %c \n",n,a,c);
+        toh(n-1,b,a,c);
     }
 }
 
-int main()
-{
-    toh(3,'a','b','c');
+int main() 
+{   
+    toh(4,'A','B','C');
+    return 0;
 }

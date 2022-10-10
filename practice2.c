@@ -1,16 +1,16 @@
 #include <stdio.h> 
-void toh(int n,char a,char b,char c)
+
+int sum(int n)
 {
-    if(n>0)
-    {
-        toh(n-1,a,c,b);
-        printf("Move disk %d from %c to %c \n",n,a,c);
-        toh(n-1,b,a,c);
-    }
+    if(n/10==0)
+        return n;
+    else
+        return n%10+sum(n/10);
 }
 
 int main() 
 {   
-    toh(4,'A','B','C');
+    int n=1020;
+    printf("%d",sum(n));
     return 0;
 }

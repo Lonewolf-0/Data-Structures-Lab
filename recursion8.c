@@ -1,26 +1,15 @@
-#include<stdio.h>
-int sum;
-int sum_of_digits(int n)
+#include <stdio.h> 
+int sum(int n)
 {
-    if (n < 10) 
-    {
+    if(n/10==0)
         return n;
-    }
-    else 
-    {
-        return n%10 + sum_of_digits(n/10);
-    }
-    
-    
-        
+    else
+        return n%10+sum(n/10);
 }
 
-
-
-
-int main()
-{
-    //sum of digits
-    printf("%d ",sum_of_digits(1340));
-
+int main() 
+{   
+    int n=1020;
+    printf("%d",sum(n));
+    return 0;
 }

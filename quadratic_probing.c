@@ -19,9 +19,10 @@ int main()
         else
         {
             k=hash_location[i];
+            int j=0;
             while (1)
             {
-                k=(k+1)%10;
+                k=(k+(j)*(j++))%10;
                 if(dat[k]==0)
                 {
                     dat[k]=data[i];

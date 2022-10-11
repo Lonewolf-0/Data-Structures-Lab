@@ -22,7 +22,8 @@ int main()
             int j=0;
             while (1)
             {
-                k=(k+(j)*(j++))%10;
+                k=(k+(j)*(j))%10;
+                j++;
                 if(dat[k]==0)
                 {
                     dat[k]=data[i];

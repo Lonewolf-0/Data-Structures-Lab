@@ -1,44 +1,22 @@
-#include <stdio.h> 
+#include<stdio.h>
 
+void oned_address(int a[],int size)
+{
+    int i=3,add;
+    printf("\nBase Address : %d",a);
+    add=&a[0]+(i)*sizeof(int);
+    printf("  %lu",sizeof(int));
+    printf("\nAddress : %d",&a[3]);
+    printf("\nCalculated : %d",add);
 
+}
 
-int main() 
+int main()
 {   
-    int data[]={1000,2000,3000,4000,5000,6000};
-    int hash_location[]={2,5,9,0,5,9};
-    int dat[10]={0};
-    int size=6;
-    int k=0;
-    for(int i=0;i<10;i++)
-        printf("%d ",dat[i]);
-    printf("\n");
-    for(int i=0;i<size;i++)
-    {
-        if(dat[hash_location[i]]==0)
-            dat[hash_location[i]]=data[i];
-        else
-        {
-            k=hash_location[i];
-            while (1)
-            {
-                if(k>=10)
-                    k=k-10;
-                
-                if(dat[k]==0)
-                {
-                    dat[k]=data[i];
-                    break;
-                }    
-                k++;
-            }
-            
-        }
 
-    }
+    int a[]={1,3,4,5,7,8,9};
+    int size=7;
+    oned_address(a,size);
 
-    for(int i=0;i<10;i++)
-        printf("%d ",dat[i]);
-    
-    
     return 0;
 }

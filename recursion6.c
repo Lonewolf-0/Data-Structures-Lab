@@ -11,6 +11,6 @@ void toh(int n,char a,char b,char c)
 
 int main() 
 {   
-    toh(4,'A','B','C');
+    toh(3,'A','B','C');
     return 0;
 }

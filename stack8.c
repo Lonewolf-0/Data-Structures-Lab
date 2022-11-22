@@ -39,6 +39,22 @@ void reverse(struct stack *s1)
     }
     printf("\n\n%s",b);
 }
+void check()
+{
+    int flag=0;
+    for(int i=0;a[i]!='\0';i++)
+    {
+        if(a[i]!=b[i])
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag)
+        printf("\nNot a palindrome");
+    else
+        printf("\nPalindrome");
+}
 
 int main()
 {
@@ -47,7 +63,7 @@ int main()
     
     push(s);
     reverse(s);
-    
+    check();
 
     return 0;
 }

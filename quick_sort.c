@@ -1,41 +1,52 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int a[]={3,5,2,7,4,9,1};
-void swap(int *a,int *b)
+
+void swap(int *x, int *y)
 {
-    int temp=*a;
-    *a=*b;
-    *b=temp;
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 }
-int partition(int l,int h)
+int partition(int l, int h,int a[])
 {
-    int pivot=a[l];
-    int i=l-1,j=h;
-    while(i<j)
+    int pivot = a[l];
+    int i = l, j = h;
+    do
     {
-        while(a[i]<=pivot)i++;
-        while(a[i]>pivot)j--;
-        if(i<j)swap(&a[i],&a[j]);
-    }
-    swap(&a[l],&a[j]);
+        do
+        {
+            i++;
+        } while (a[i] <= pivot);
+        do
+        {
+            j--;
+        } while (a[j] > pivot);
+        if (i < j)
+            swap(&a[i], &a[j]);
+    } while (i < j);
+    swap(&a[l], &a[j]);
     return j;
 }
-void quicksort(int l,int h)
+void quicksort(int l, int h,int a[])
 {
-    if(l<h)
+    int j;
+    if (l < h)
     {
-        int j=partition(l,h);
-        quicksort(l,j);
-        quicksort(j+1,h);
+        j = partition(l, h,a);
+        quicksort(l, j,a);
+        quicksort(j + 1, h,a);
     }
 }
 int main()
 {
-    for(int i=0;i<7;i++)printf("%d ",a[i]);
+    int a[] = {11, 13, 7, 12, 16, 9, 24, 5, 10, 3}, n = 10, i;
+    for (i = 0; i < 10; i++)
+        printf("%d ", a[i]);
     printf("\n");
-    quicksort(0,7);
-    for(int i=0;i<7;i++)printf("%d ",a[i]);
-
-
+    quicksort(0, n,a);
+    for (i = 0; i < 10; i++)
+        printf("%d ", a[i]);
+    printf("\n");
     return 0;
 }

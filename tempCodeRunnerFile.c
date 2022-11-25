@@ -1,1 +1,1 @@
-check();
+#include<stdio.h>

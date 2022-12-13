@@ -26,6 +26,9 @@ int partition(int l, int h,int a[])
             swap(&a[i], &a[j]);
     } while (i < j);
     swap(&a[l], &a[j]);
+    // for (int i = 0; i < h; i++)
+    //     printf("%d ", a[i]);
+    // printf("\n");
     return j;
 }
 void quicksort(int l, int h,int a[])
@@ -40,12 +43,12 @@ void quicksort(int l, int h,int a[])
 }
 int main()
 {
-    int a[] = {11, 13, 7, 12, 16, 9, 24, 5, 10, 3}, n = 10, i;
-    for (i = 0; i < 10; i++)
+    int a[] = {50, 70, 60, 90, 40, 80, 10, 20, 30}, n = 9, i;
+    for (i = 0; i < n; i++)
         printf("%d ", a[i]);
     printf("\n");
     quicksort(0, n,a);
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < n; i++)
         printf("%d ", a[i]);
     printf("\n");
     return 0;

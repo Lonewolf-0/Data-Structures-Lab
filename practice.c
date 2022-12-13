@@ -56,6 +56,34 @@ struct node* search(struct node *p,int key)
     return NULL;
 }
 
+struct node* delete()
+{
+    struct node* temp= first;
+    first=first->next;
+    return temp;
+}
+
+struct node* delete_any_position(struct node* p,int index)
+{
+    struct node* q=NULL;
+    int c=0;
+    while (p!=NULL)
+    {
+        if(index==c)
+        {
+            struct node* temp=p;
+            q->next=p->next;
+            return temp;
+        }
+        q=p;
+        p=p->next;
+        
+        c++;
+    }
+    return NULL;
+}
+
+
 
 
 int main()
@@ -67,8 +95,16 @@ int main()
 
     struct node* temp=search(first,1);
     printf("\nElement found at address : %d ",temp);
-    
-    
+
+    temp=delete();
+    printf("\nElement Deleted at first : %d",temp->data);
+    printf("\nLinked List after deletion : ");
+    display(first);
+
+    temp=delete_any_position(first,3);
+    printf("\nElement Deleted at 1 index : %d",temp->data);
+    printf("\nLinked List after deletion : ");
+    display(first);
 
 
 

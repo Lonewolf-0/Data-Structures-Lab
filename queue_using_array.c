@@ -12,17 +12,17 @@ struct queue
 void create(struct queue *q, int size)
 {
     q->size = size;
-    q->front = q->rear = 0;
+    q->front = q->rear = -1;
     q->Q = (int *)malloc(q->size * sizeof(int));
 }
 
 void enqueue(struct queue *q, int x)
 {
-    if ((q->rear + 1) % q->size == q->front)
+    if (q->rear == q->size - 1)
         printf("Queue is Full\n");
     else
     {
-        q->rear = (q->rear + 1) % q->size;
+        q->rear++;
         q->Q[q->rear] = x;
     }
 }
@@ -34,7 +34,7 @@ int dequeue(struct queue *q)
         printf("Queue is Empty\n");
     else
     {
-        q->front = (q->front + 1) % q->size;
+        q->front++;
         x = q->Q[q->front];
     }
     return x;
@@ -42,21 +42,17 @@ int dequeue(struct queue *q)
 
 void display(struct queue q)
 {
-    int i = q.front + 1;
-
-    do
+    for (int i = q.front + 1; i <= q.rear; i++)
     {
         printf("%d ", q.Q[i]);
-        i = (i + 1) % q.size;
-    } while (i != (q.rear + 1) % q.size);
-
+    }
     printf("\n");
 }
 
 int main()
 {
     struct queue q;
-    create(&q, 7);
+    create(&q, 10);
     enqueue(&q, 10);
     enqueue(&q, 20);
     enqueue(&q, 30);
@@ -65,11 +61,6 @@ int main()
     dequeue(&q);
     display(q);
     dequeue(&q);
-    display(q);
-    enqueue(&q, 50);
-    enqueue(&q, 60);
-    enqueue(&q, 70);
-    enqueue(&q, 80);
     display(q);
 
     return 0;

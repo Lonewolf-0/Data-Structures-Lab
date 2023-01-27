@@ -14,7 +14,7 @@ void create(struct stack *s1)
 
 void push(struct stack *s1)
 {
-    if(s1->top>20)
+    if(s1->top>=20)
         printf("\nStack Overflow");
     else
     {
